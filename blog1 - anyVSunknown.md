@@ -18,7 +18,7 @@ Example:
 let data: any;
 
 data = "Hello";
-data.toFixed(); // No error at compile time ❌
+data.toFixed(); // No error at compile time
 ```
 
 Here, TypeScript assumes `data` can be anything, so it does not warn you—even though `toFixed()` is invalid for a string.
@@ -44,7 +44,7 @@ Example:
 let data: unknown;
 
 data = "Hello";
-data.toFixed(); // Error ❌
+data.toFixed(); // Error
 ```
 
 TypeScript forces you to verify the type before using it.
@@ -118,7 +118,7 @@ function isUser(data: unknown): data is User {
 
 function process(data: unknown) {
   if (isUser(data)) {
-    console.log(data.name); // Safe ✔
+    console.log(data.name); // Safe
   }
 }
 ```

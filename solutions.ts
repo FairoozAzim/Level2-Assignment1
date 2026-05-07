@@ -11,11 +11,11 @@ filterEvenNumbers([1, 2, 3, 4, 5, 6])
 
 //Problem 2 
 
-function reverseString (str : string){
-    const lastIndex : number = str.length - 1;
+function reverseString (word : string){
+    const lastIndex : number = word.length - 1;
     let revString : string = '';
     for (let i = lastIndex; i >=0 ; i--){
-        revString+= str[i];
+        revString+= word[i];
     }
     return revString;
 }
@@ -26,8 +26,8 @@ reverseString('typescript');
 
 type StringOrNumber = string | number
 
-function checkType (elem : StringOrNumber) {
-    return (typeof elem === "string") ? "String" : "Number"  ;
+function checkType (element : StringOrNumber) {
+    return (typeof element === "string") ? "String" : "Number"  ;
 }
 
 checkType("Hello");
