@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In TypeScript, type safety is one of the biggest advantages over JavaScript. It helps catch errors at compile time instead of runtime. However, the type `any` can silently break this safety system, which is why it is often called a *type safety hole*.
+In TypeScript, type safety is one of the biggest advantages over JavaScript. It helps catch errors at compile time instead of runtime. However, the type `any` can silently break this safety system, which is why it is often called a **type safety hole**.
 
 To solve this problem, TypeScript introduces `unknown`, a safer alternative for handling unpredictable data. This blog explains why `any` is risky, why `unknown` is safer, and how **type narrowing** makes it usable.
 
@@ -16,12 +16,11 @@ Example:
 
 ```ts
 let data: any;
-
 data = "Hello";
 data.toFixed(); // No error at compile time
 ```
 
-Here, TypeScript assumes `data` can be anything, so it does not warn you—even though `toFixed()` is invalid for a string.
+Here, TypeScript assumes `data` can be anything, so it does not warn you, even though `toFixed()` is invalid for a string.
 
 This leads to:
 
@@ -59,7 +58,7 @@ This makes `unknown` useful when dealing with:
 
 ## What is Type Narrowing?
 
-Type narrowing is the process of refining a variable from a broad type (like `unknown`) into a more specific type (like `string` or `number`) using checks.
+Type narrowing is the process of redefining a variable from a broad type (like `unknown`) into a more specific type (like `string` or `number`) using checks.
 
 TypeScript uses control flow analysis to narrow types.
 
@@ -96,32 +95,6 @@ function handleValue(value: unknown) {
 ```
 
 Each branch narrows the type differently, allowing safe usage.
-
----
-
-## Narrowing with Objects
-
-You can also narrow using custom properties:
-
-```ts
-type User = {
-  name: string;
-};
-
-function isUser(data: unknown): data is User {
-  return (
-    typeof data === "object" &&
-    data !== null &&
-    "name" in data
-  );
-}
-
-function process(data: unknown) {
-  if (isUser(data)) {
-    console.log(data.name); // Safe
-  }
-}
-```
 
 ---
 
